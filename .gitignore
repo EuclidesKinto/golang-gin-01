@@ -1,0 +1,12 @@
+
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+*.out
+
+modules.xml
+golang-gin-01.iml
+vcs.xml
