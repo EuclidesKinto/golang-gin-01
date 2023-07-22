@@ -13,7 +13,7 @@ type TagsRepositoryImpl struct {
 }
 
 func NewTagsRepositoryImpl(Db *gorm.DB) TagsRepository {
-	return TagsRepositoryImpl{Db: Db}
+	return &TagsRepositoryImpl{Db: Db}
 }
 
 func (t *TagsRepositoryImpl) Delete(tagsId int) {
@@ -24,7 +24,7 @@ func (t *TagsRepositoryImpl) Delete(tagsId int) {
 
 func (t *TagsRepositoryImpl) FindAll() []model.Tags {
 	var tags []model.Tags
-	result := t.Db.Where(&tags)
+	result := t.Db.Find(&tags)
 	helper.ErrorPanic(result.Error)
 	return tags
 }

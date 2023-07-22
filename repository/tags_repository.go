@@ -7,5 +7,5 @@ type TagsRepository interface {
 	Update(tags model.Tags)
 	Delete(tagsId int)
 	FindById(tagsId int) (tags model.Tags, err error)
-	FinAll() []model.Tags
+	FindAll() []model.Tags
 }
