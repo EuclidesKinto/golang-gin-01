@@ -19,7 +19,8 @@ func main() {
 	//Databse
 	db := config.DataBaseConnection()
 	validate := validator.New()
-	db.Table("tags").AutoMigrate(&model.Tags{})
+	errDb := db.Table("tags").AutoMigrate(&model.Tags{})
+	helper.ErrorPanic(errDb)
 
 	// Repository
 	tagsRepository := repository.NewTagsRepositoryImpl(db)
