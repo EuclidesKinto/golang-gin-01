@@ -6,8 +6,8 @@ import (
 	"github.com/EuclidesKinto/golang-gin-01/helper"
 	"github.com/EuclidesKinto/golang-gin-01/model"
 	"github.com/EuclidesKinto/golang-gin-01/repository"
+	"github.com/EuclidesKinto/golang-gin-01/router"
 	"github.com/EuclidesKinto/golang-gin-01/service"
-	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"github.com/rs/zerolog/log"
 	"net/http"
@@ -31,11 +31,8 @@ func main() {
 	tagsController := controller.NewTagsController(tagsService)
 
 	// Router
+	routes := router.NewRouter(tagsController)
 
-	routes := gin.Default()
-	routes.GET("", func(context *gin.Context) {
-		context.JSON(http.StatusOK, "teste")
-	})
 	server := &http.Server{
 		Addr:    ":8888",
 		Handler: routes,
